@@ -88,19 +88,31 @@
   .nav-btn .em{font-size:17px;}
   .nav-btn.active{color:var(--teal-dark);background:rgba(47,182,168,0.1);}
 
-  /* MARKETING COVER (image-based) */
+  /* MARKETING COVER (real image: whole on desktop, split in two on mobile) */
   .cover2{position:fixed;inset:0;z-index:300;overflow-y:auto;background:#0B1620;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;transition:opacity .4s ease, visibility .4s ease;}
   .cover2.hide{opacity:0;visibility:hidden;pointer-events:none;}
-  .cov-img-wrap{width:100%;max-width:1100px;}
-  .cov-img-wrap img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.6);}
+  .cov-full{width:100%;max-width:1100px;}
+  .cov-full img{width:100%;height:auto;display:block;border-radius:14px;box-shadow:0 30px 70px -20px rgba(0,0,0,0.6);}
+  .cov-mobile{display:none;width:100%;max-width:420px;}
+  .cov-mobile img{width:100%;height:auto;display:block;}
+  .cov-mobile img:first-child{border-radius:14px 14px 0 0;}
+  .cov-mobile img:last-child{border-radius:0 0 14px 14px;margin-top:2px;}
+  @media (max-width:860px){
+    .cov-full{display:none;}
+    .cov-mobile{display:block;box-shadow:0 30px 70px -20px rgba(0,0,0,0.6);border-radius:14px;overflow:hidden;}
+  }
   .cov-enter{margin-top:22px;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:15px 34px;font-weight:800;font-size:15px;box-shadow:0 14px 30px -10px rgba(47,182,168,0.5);}
 </style>
 </head>
 <body>
 
 <div class="cover2" id="cover2">
-  <div class="cov-img-wrap">
+  <div class="cov-full">
     <img src="assets/cover-tourism.png" alt="MN Systems — Центр управления туристической компанией">
+  </div>
+  <div class="cov-mobile">
+    <img src="assets/cover-tourism-right.png" alt="Панель на телефоне">
+    <img src="assets/cover-tourism-left.png" alt="MN Systems — Центр управления туристической компанией">
   </div>
   <button class="cov-enter" onclick="document.getElementById('cover2').classList.add('hide')">Войти в панель →</button>
 </div>
